@@ -5,8 +5,9 @@ const connectDB = async () => {
     await mongoose.connect(`${process.env.MONGODB_URI}/ticketNepal`);
     console.log("MongoDB connected successfully");
   } catch (error) {
-  console.log(error.message);
-}
+    console.error("MongoDB connection error:", error.message);
+    process.exit(1);
+  }
 };
 
 export default connectDB;
